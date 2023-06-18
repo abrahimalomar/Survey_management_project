@@ -1,0 +1,57 @@
+﻿@model IEnumerable<SurveyProject.Models.Questions>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="card-header text-center">
+    <h3 class="card-title ">List of questions for this survey</h3>
+</div>
+
+
+<br />
+
+<table class="table table-bordered table-striped  table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.QuestionTitile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsRequired)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Questionnaire)
+            </th>
+            <th>actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuestionTitile)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsRequired)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Questionnaire.Titel)
+                </td>
+                <td>
+                    <a asp-action="Create" asp-controller="Options" asp-route-id="@item.Id" class="btn btn-success">Create Options</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                    <a asp-action="Index" asp-controller="Options" asp-route-id="@item.Id" class="btn btn-success">View question options</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

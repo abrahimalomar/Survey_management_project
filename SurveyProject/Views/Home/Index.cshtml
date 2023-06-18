@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model IEnumerable<Questionnaires>
+
+<div class="card-container">
+    @foreach (var item in Model)
+    {
+        <div class="card" style="width: 18rem;">
+            <img src="~/img/QuestionnairesImg/@item.ImgUrl" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">@item.Titel</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a asp-controller="Home" asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Apply</a>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        /* Add any other styles you want for the container */
+    }
+
+    .card {
+        /* Remove the width property from the card itself */
+        margin-bottom: 20px;
+        /* Add any other styles you want for the cards */
+    }
+</style>
+
+
+
+

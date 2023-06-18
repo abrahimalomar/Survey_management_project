@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Apply";
+}
+<h1>@ViewData["Title"]</h1>
+
+
+@model List<Questions>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <form asp-action="Apply">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @foreach (var item in Model)
+            {
+                //if (item.QuestionnaireId== Guid.Parse("7220b901-bc51-4e0d-9004-0e92a801a594"))
+               
+
+                @if (item.QuestionnaireId == ViewBag.QuestionnaireId)
+                {
+           <div class="form-group">
+            @if (item.IsRequired == true)
+            {
+                <label style="color:red;font-size:20px">*</label> <label class="control-label">@item.QuestionTitile</label>
+            }
+            else
+            {
+             <label class="control-label">@item.QuestionTitile</label>
+            }
+
+            <input type="hidden" name="selectId[@item.Id]" value="@item.Id" />
+            @if (item.Type != QutionType.radio)
+            {
+               
+                <input type="@item.Type" name="selecteItems" class="form-control"  required="@item.IsRequired" value="defualt value" />
+            }
+
+            <span class="text-danger"></span>
+        </div>
+               
+                    //  @if (item.Options != null)
+                    //{
+                    @foreach (var i in item.Options)
+                    {
+                        //  if (item.Id == i.QutionId)
+                        // {
+                    <div class="form-group">
+                        <label class="control-label">@i.Options1</label>
+                        <input type=@i.Type name="selecteItems" class="form-control" value=@i.Options1 />
+                        <!-- <span asp-validation-for="answer" class="text-danger"></span>-->
+                    </div>
+
+                       
+                        //  }
+
+                    }
+
+                    //  }
+                }
+
+
+
+
+
+            }
+            <div class="form-group">
+                <input type="submit" value="Apply" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<SurveyProject.Models.Questionnaires>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="card-header text-center">
+   <h3 class="card-title ">List of questionnaires</h3>
+</div>
+<br />
+<p>
+    <a asp-action="Create" class="btn btn-success">Create a new Questionnaire</a>
+</p>
+<table class="table table-striped table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImgUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th>actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titel)
+                </td>
+                <td>
+                    @Html.Raw(item.Description)
+                </td>
+                <td>
+
+                    <img src="~/img/QuestionnairesImg/@item.ImgUrl" class="img-thumbnail" style="width:64px;height:64px" />
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.UserName)
+                </td>
+                <td>
+                    <a asp-controller="UserQuestionnaire" asp-action="ViewResponses" asp-route-id="@item.Id" class="btn btn-primary">View responses</a>
+                    <a asp-controller="Questions" asp-action="Create" asp-route-id="@item.Id" class="btn btn-success">Create a question</a>
+                    <a asp-controller="Questions" asp-action="ViewQuestions" asp-route-id="@item.Id" class="btn btn-secondary">View the list of questions</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

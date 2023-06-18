@@ -1,0 +1,311 @@
+﻿@model IEnumerable<SurveyProject.Models.UserQuestionnaire>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@*
+    <h1>Index</h1>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.answer)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Questions.QuestionTitile)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Questionnaire)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.User)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.answer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Questions.QuestionTitile)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Questionnaire.Titel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.UserName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+*@
+
+
+@*
+    <div class="hold-transition sidebar-mini">
+        <div class="wrapper">
+
+            <div>
+
+
+                <!-- Main content -->
+                <section class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <!-- /.card -->
+                                <div class="card">
+                                    <!-- /.card-header -->
+                                    <div class="card-body">
+                                        <table id="example1" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>answer</th>
+                                                    <th>QuestionTitile</th>
+                                                    <th>QuestionnaireTitile</th>
+                                                    <th>UserName</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                @foreach (var item in Model)
+                                                {
+                                                    <tr>
+                                                        <td>@item.Date  </td>
+                                                        <td>@item.answer</td>
+
+                                                        <td>
+                                                        </td>
+                                                        <td>@item.Questionnaire.Titel</td>
+                                                        <td>@item.User.UserName</td>
+                                                        <td>
+                                                            <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.Id">Edit</a>
+                                                            <a asp-action="Details" class="btn btn-success" asp-route-id="@item.Id">Details</a>
+                                                            <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id">Delete</a>
+                                                        </td>
+
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>answer</th>
+                                                    <th>QuestionTitile</th>
+                                                    <th>QuestionnaireTitile</th>
+                                                    <th>UserName</th>
+                                                    <th></th>
+
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                    <!-- /.card-body -->
+                                </div>
+                                <!-- /.card -->
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </section>
+                <!-- /.content -->
+            </div>
+
+            <!-- Control Sidebar -->
+            <!-- /.control-sidebar -->
+        </div>
+
+
+
+        @section Scripts{
+
+
+
+
+            <!--DataTable -->
+            <script src="~/js/Datatable.js"></script>
+        }
+    </div>
+
+*@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AdminLTE 3 | DataTables</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+</head>
+
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        <!-- Content Wrapper. Contains page content -->
+        <div>
+            <!-- Content Header (Page header) -->
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+
+                                <!-- /.card-header -->
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                            <div class="card-header text-center">
+                                <h3 class="card-title text-center">List of responses</h3>
+                            </div>
+                            <br />
+                            <div class="card">
+                                
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <table id="example1" class="table table-bordered table-striped"  style="border-width: 7px;">
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>answer</th>
+                                                <th>QuestionTitile</th>
+                                                <th>QuestionnaireTitile</th>
+                                                <th>UserName</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>@item.Date  </td>
+                                                    <td>@item.answer</td>
+
+                                                    <td>
+                                                    
+                                                    </td>
+
+                                                    <td>@item.Questionnaire.Titel</td>
+                                                    <td>@item.User.UserName</td>
+                                                    <td>
+                                                        <a asp-action="Edit" asp-route-id="@item.Id"></a>
+                                                        <a asp-action="Details"  asp-route-id="@item.Id"></a>
+                                                        <a asp-action="Delete"  asp-route-id="@item.Id"></a>
+                                                    </td>
+
+                                                </tr>
+                                            }
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>answer</th>
+                                                <th>QuestionTitile</th>
+                                                <th>QuestionnaireTitile</th>
+                                                <th>UserName</th>
+                                                <th></th>
+
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="../../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="../../plugins/jszip/jszip.min.js"></script>
+    <script src="../../plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="../../plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../../dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../../dist/js/demo.js"></script>
+    <!-- Page specific script -->
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
+</body>
+</html>

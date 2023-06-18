@@ -1,0 +1,59 @@
+﻿@model SurveyProject.Models.Questionnaires
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="card-header text-center">
+    <h3 class="card-title ">Create a new Questionnaire</h3>
+</div>
+
+
+<script src="~/ckeditor/ckeditor.js"></script>
+
+
+<div class="container-fluid p-1">
+    <div class="card">
+        <div class="card-body">
+            <form asp-action="Create" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="panel panel-primary">
+                    
+                            <div class="form-group">
+                              
+                                <label asp-for="Titel" class="control-label"></label>
+                                <input asp-for="Titel" class="form-control" />
+                                <span asp-validation-for="Titel" class="text-danger"></span>
+                            </div>
+                     
+                            <div class="form-group">
+                                <label asp-for="Description" class="control-label"></label>
+                                <!-- <input asp-for="Description" class="form-control" />-->
+                                <textarea asp-for="Description" class="form-control" id="QuestionnairesDescription"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                                <div class="form-group">
+                                    <label asp-for="ImgUrl" class="control-label"></label>
+                                    <input asp-for="ImgUrl" class="form-control" />
+                                    <span asp-validation-for="ImgUrl" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="submit" value="Create" class="btn btn-primary" />
+                                </div>
+                            </div>
+                    </form>
+            </div>
+        </div>
+
+        </div>
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+        <script>
+
+            CKEDITOR.replace("QuestionnairesDescription")
+        </script>
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }
